@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="./style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="contenedor">
+    <div id="calculadora">
+      <div class="contenido">
+        <h1>Calculadora de hidratación</h1>
+        <p class="item">Ingrese todos los datos</p>
+        <input class="item" id="peso" type="number" placeholder="Peso en kg" />
+        <p class="item error">* Ingrese todos los datos</p>
+        <button class="item" id="calcular">Calcular</button>
+        <p class="item resultado" id="flu">71cc/h</p>
+        <p class="item resultado" id="man">m+m/2 : 105cc/h</p>
+      </div>
+    </div>
+    <div id="detalle">
+      <div class="contenido">
+        <h1>¿Cómo se calcula?</h1>
+        <ul>
+          <li>De 0kg a 10kg, se calcula 100cc por cada kilogramo.</li>
+          <li>Para pesos por encima de 10kg hasta 20kg, se suman 50cc por cada kilogramo.</li>
+          <li>Para pesos por encima de 20kg, se suman 20cc por cada kilogramo adicional.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Anima el campo de entrada al enfocarse
+    const pesoInput = document.getElementById('peso');
+    pesoInput.addEventListener('focus', () => {
+      pesoInput.classList.add('animado', 'aparecer');
+      setTimeout(() => {
+        pesoInput.classList.remove('animado', 'aparecer');
+      }, 500);
+    });
+
+    // Anima el mensaje de error al enfocarse
+    const errorElement = document.getElementById('error');
+    errorElement.addEventListener('focus', () => {
+      errorElement.classList.add('animado', 'agitar');
+      setTimeout(() => {
+        errorElement.classList.remove('animado', 'agitar');
+      }, 500);
+    });
+
+    // Anima los elementos de resultado al hacer clic
+    const calcularButton = document.getElementById('calcular');
+    calcularButton.addEventListener('click', () => {
+      const fluElement = document.getElementById('flu');
+      fluElement.classList.add('animado', 'animar-entrada');
+      setTimeout(() => {
+        fluElement.classList.remove('animado', 'animar-entrada');
+      }, 500);
+
+      const manElement = document.getElementById('man');
+      manElement.classList.add('animado', 'animar-entrada');
+      setTimeout(() => {
+        manElement.classList.remove('animado', 'animar-entrada');
+      }, 500);
+
+      // Oculta el botón de calcular después de hacer clic
+      calcularButton.classList.add('animado', 'desaparecer');
+      setTimeout(() => {
+        calcularButton.classList.remove('animado', 'desaparecer');
+      }, 500);
+    });
+  </script>
+</body>
+</html>
