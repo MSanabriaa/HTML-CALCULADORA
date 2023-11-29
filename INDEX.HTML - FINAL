@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="./style.css">
+  <script src="script.js" defer></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="contenedor">
+    <div id="calculadora">
+      <div class="contenido">
+        <h1>Calculadora de hidratación</h1>
+        <p class="item">Ingrese todos los datos</p>
+        <input class="item" id="peso" type="number" placeholder="Peso en kg" required />
+        <p class="item error" id="error">* Ingrese todos los datos</p>
+        <button class="item" id="calcular" onclick="calcularResultados()">Calcular</button>
+        <p class="resultado" id="flu">Flujo horario: <span id="flujo"></span> cc/h</p>
+        <p class="resultado" id="man">m+m/2: <span id="mantenimiento"></span> cc/h</p>
+        <p class="resultado" id="pesoKg">Peso en kg: <span id="resultadoPesoKg"></span></p> 
+        <p class="resultado" id="imc">IMC: <span id="imc"></span></p>
+      </div>
+    </div>
+    <div id="detalle">
+      <div class="contenido">
+        <h1>¿Cómo se calcula?</h1>
+        <ul>
+          <li>De 0kg a 10kg, se calcula 100cc por cada kilogramo.</li>
+          <li>Para pesos por encima de 10kg hasta 20kg, se suman 50cc por cada kilogramo.</li>
+          <li>Para pesos por encima de 20kg, se suman 20cc por cada kilogramo adicional.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
