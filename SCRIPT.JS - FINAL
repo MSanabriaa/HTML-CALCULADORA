@@ -61,3 +61,29 @@ try {
 } catch (error) {
     console.error("Error:", error.message);
 }
+
+// Actualiza los resultados en la página
+const peso = parseFloat(pesoInput.value);
+if (peso <= 30) {
+  const resultadoHollidaySegar = calcularHidratacionHollidaySegar(peso);
+  fluElement.textContent = `Flujo horario: ${resultadoHollidaySegar.mantenimiento.toFixed(2)} cc/h`;
+  manElement.textContent = `m+m/2: ${resultadoHollidaySegar.mMasM2.toFixed(2)} cc/h`;
+
+  // Oculta los resultados del método de superficie corporal
+  fluElementSuperficie.style.display = 'none';
+  manElementSuperficie.style.display = 'none';
+} else {
+  const resultadoSuperficieCorporal = calcularHidratacionSuperficieCorporal(peso);
+  fluElementSuperficie.textContent = `Flujo horario (1500): ${resultadoSuperficieCorporal.volumenDiario1500.toFixed(2)} cc/h`;
+  manElementSuperficie.textContent = `Flujo horario (2000): ${resultadoSuperficieCorporal.volumenDiario2000.toFixed(2)} cc/h`;
+
+  // Oculta los resultados del método de Holliday-Segar
+  fluElement.style.display = 'none';
+  manElement.style.display = 'none';
+}
+
+// Muestra los resultados
+fluElement.style.display = 'block';
+manElement.style.display = 'block';
+fluElementSuperficie.style.display = 'block';
+manElementSuperficie.style.display = 'block';
