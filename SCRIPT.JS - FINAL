@@ -1,0 +1,63 @@
+// Método Holliday-Segar para niños hasta 30kg
+function calcularHidratacionHollidaySegar(peso) {
+    if (peso <= 0 || peso > 30) {
+        throw new Error("El peso debe estar entre 1 y 30 kg para usar el método de Holliday-Segar.");
+    }
+
+    let volumenDiario = 0;
+
+    if (peso <= 10) {
+        volumenDiario = peso * 100;
+    } else if (peso <= 20) {
+        volumenDiario = 10 * 100 + (peso - 10) * 50;
+    } else {
+        volumenDiario = 10 * 100 + 10 * 50 + (peso - 20) * 20;
+    }
+
+    const mantenimiento = volumenDiario / 24;
+    const mMasM2 = mantenimiento * 1.5;
+
+    return {
+        volumenDiario,
+        mantenimiento,
+        mMasM2,
+    };
+}
+
+// Método de superficie corporal para niños de más de 30kg
+function calcularHidratacionSuperficieCorporal(peso) {
+    if (peso <= 30) {
+        throw new Error("El peso debe ser mayor a 30 kg para usar el método de superficie corporal.");
+    }
+
+    const superficieCorporal = (peso * 4 + 7) / (peso + 90);
+    const volumenDiario1500 = superficieCorporal * 1500;
+    const volumenDiario2000 = superficieCorporal * 2000;
+
+    return {
+        superficieCorporal,
+        volumenDiario1500,
+        volumenDiario2000,
+    };
+}
+
+// Ejemplo de uso
+const pesoEjemplo = 25; // Cambiar el peso según sea necesario
+
+try {
+    if (pesoEjemplo <= 30) {
+        const resultadoHollidaySegar = calcularHidratacionHollidaySegar(pesoEjemplo);
+        console.log("Método Holliday-Segar:");
+        console.log("Volumen diario:", resultadoHollidaySegar.volumenDiario, "cc");
+        console.log("Mantenimiento:", resultadoHollidaySegar.mantenimiento, "cc/hr");
+        console.log("m+m/2:", resultadoHollidaySegar.mMasM2, "cc/hr");
+    } else {
+        const resultadoSuperficieCorporal = calcularHidratacionSuperficieCorporal(pesoEjemplo);
+        console.log("Método de superficie corporal:");
+        console.log("Superficie corporal:", resultadoSuperficieCorporal.superficieCorporal);
+        console.log("Volumen diario (1500):", resultadoSuperficieCorporal.volumenDiario1500, "cc");
+        console.log("Volumen diario (2000):", resultadoSuperficieCorporal.volumenDiario2000, "cc");
+    }
+} catch (error) {
+    console.error("Error:", error.message);
+}
