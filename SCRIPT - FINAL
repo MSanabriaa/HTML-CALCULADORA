@@ -1,0 +1,41 @@
+function calcularResultados() {
+    const pesoInput = document.getElementById('peso');
+    const peso = pesoInput.value;
+
+    if (!isNaN(peso)) {
+        if (peso <= 30) {
+            const resultadoHollidaySegar = calcularHidratacionHollidaySegar(peso);
+            const fluElement = document.getElementById('flujo');
+            const manElement = document.getElementById('mantenimiento');
+            const pesoKgElement = document.getElementById('resultadoPesoKg'); // Cambiado de 'pesoKg' a 'resultadoPesoKg'
+
+            fluElement.textContent = `Flujo horario: ${resultadoHollidaySegar.mantenimiento.toFixed(2)} cc/h`;
+            manElement.textContent = `m+m/2: ${resultadoHollidaySegar.mMasM2.toFixed(2)} cc/h`;
+            pesoKgElement.textContent = `Peso en kg: ${peso}`;
+
+            fluElement.classList.add('animado', 'animar-entrada');
+            setTimeout(() => {
+                fluElement.classList.remove('animado', 'animar-entrada');
+            }, 500);
+
+            manElement.classList.add('animado', 'animar-entrada');
+            setTimeout(() => {
+                manElement.classList.remove('animado', 'animar-entrada');
+            }, 500);
+
+            pesoKgElement.classList.add('animado', 'animar-entrada'); // Agregado para animar la entrada del resultado del peso en kg
+            setTimeout(() => {
+                pesoKgElement.classList.remove('animado', 'animar-entrada');
+            }, 500);
+        } else {
+          
+        }
+
+        // Muestra los resultados
+        document.getElementById('flu').style.display = 'block';
+        document.getElementById('man').style.display = 'block';
+    } else {
+        console.error("Error: Ingrese un valor válido para el peso.");
+    }
+}
+
